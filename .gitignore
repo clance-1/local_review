@@ -1,0 +1,17 @@
+# Python 캐시 폴더
+__pycache__/
+*.py[cod]
+
+# 가상환경 폴더
+.venv/
+venv/
+env/
+
+# 에디터 및 설정 폴더
+.vscode/
+.idea/
+.DS_Store
+
+# 테스트 캐시
+.pytest_cache/
+.tox/
