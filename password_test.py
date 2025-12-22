@@ -11,3 +11,5 @@ def test_generate_password_length(length):
 def test_generate_password_negative_raises():
     with pytest.raises(ValueError):
         generate_password(-1)
+        
+        
