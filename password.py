@@ -3,7 +3,7 @@ import string
 
 # 서로 헷갈리기 쉬운 문자들(O, 0, o, l, I, 1, S, 5, Z, 2, B, 8, G, 6, |)은 가독성을 위해 비밀번호에서 제외한다.
 AMBIGUOUS_CHARACTERS = set("O0olI1S5Z2B8G6|")
-CHARACTERS = ''.join(
+PASSWORD_CHARACTERS = ''.join(
     ch for ch in (string.ascii_letters + string.digits + string.punctuation)
     if ch not in AMBIGUOUS_CHARACTERS
 )
@@ -27,4 +27,4 @@ def generate_password(length):
     if length < 0:
         raise ValueError("length must be non-negative")
 
-    return ''.join(secrets.choice(CHARACTERS) for _ in range(length))
+    return ''.join(secrets.choice(PASSWORD_CHARACTERS) for _ in range(length))
