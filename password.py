@@ -14,16 +14,7 @@ import string
 #
 # 이러한 문자들을 제외하면 비밀번호의 가독성이 향상되고 입력 오류가 줄어듭니다.
 AMBIGUOUS_CHARACTERS = set("O0olI1S5Z2B8G6|")
-
-# CHARACTERS: 비밀번호 생성에 사용되는 최종 문자 집합
-#
-# 영문 대소문자, 숫자, 특수문자를 포함하되 AMBIGUOUS_CHARACTERS에 포함된
-# 문자는 제외합니다. 이 문자열은 generate_password() 함수에서 무작위
-# 비밀번호를 생성할 때 사용됩니다.
-#
-# 구성: string.ascii_letters + string.digits + string.punctuation에서
-#       혼동되는 문자를 제거한 결과입니다.
-CHARACTERS = ''.join(
+PASSWORD_CHARACTERS = ''.join(
     ch for ch in (string.ascii_letters + string.digits + string.punctuation)
     if ch not in AMBIGUOUS_CHARACTERS
 )
@@ -36,7 +27,7 @@ def generate_password(length):
         length (int): 생성할 비밀번호 길이. 0 이상의 정수여야 합니다.
 
     Returns:
-        str: 지정한 길이의 랜덤 비밀번호.
+        str: 지정한 길이의 랜덤 비밀번호. length가 0인 경우 빈 문자열('')을 반환합니다.
 
     Raises:
         TypeError: length가 int가 아닌 경우.
@@ -47,4 +38,4 @@ def generate_password(length):
     if length < 0:
         raise ValueError("length must be non-negative")
 
-    return ''.join(secrets.choice(CHARACTERS) for _ in range(length))
+    return ''.join(secrets.choice(PASSWORD_CHARACTERS) for _ in range(length))
