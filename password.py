@@ -16,7 +16,7 @@ def generate_password(length):
         length (int): 생성할 비밀번호 길이. 0 이상의 정수여야 합니다.
 
     Returns:
-        str: 지정한 길이의 랜덤 비밀번호.
+        str: 지정한 길이의 랜덤 비밀번호. length가 0인 경우 빈 문자열('')을 반환합니다.
 
     Raises:
         TypeError: length가 int가 아닌 경우.
