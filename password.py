@@ -1,7 +1,18 @@
 import secrets
 import string
 
-# 서로 헷갈리기 쉬운 문자들(O, 0, o, l, I, 1, S, 5, Z, 2, B, 8, G, 6, |)은 가독성을 위해 비밀번호에서 제외한다.
+# AMBIGUOUS_CHARACTERS: 비밀번호 생성 시 제외할 문자들의 집합
+#
+# 서로 헷갈리기 쉬운 문자들(O, 0, o, l, I, 1, S, 5, Z, 2, B, 8, G, 6, |)은
+# 가독성을 위해 비밀번호에서 제외합니다.
+#
+# 이 집합에는 시각적으로 혼동되기 쉬운 문자들이 포함되어 있습니다:
+#   - 대문자 O와 숫자 0
+#   - 소문자 l과 숫자 1
+#   - 대문자 I와 숫자 1
+#   - 기타 혼동 가능한 문자: S/5, Z/2, B/8, G/6, |
+#
+# 이러한 문자들을 제외하면 비밀번호의 가독성이 향상되고 입력 오류가 줄어듭니다.
 AMBIGUOUS_CHARACTERS = set("O0olI1S5Z2B8G6|")
 PASSWORD_CHARACTERS = ''.join(
     ch for ch in (string.ascii_letters + string.digits + string.punctuation)
